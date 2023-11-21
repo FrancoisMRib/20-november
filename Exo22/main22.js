@@ -54,4 +54,12 @@ function calculer() {
 }
 
 //CORRECTION : partie pour vérifier si les champs sont remplis et que les valeurs sont des nombres
-if (prixHt.value !="" && quantite.value !="" && !isNaN(quantite.value) && !isNaN(prixHt.value))
+if (prixHt.value !="" && quantite.value !="" && !isNaN(quantite.value) && !isNaN(prixHt.value)) {
+    //calcul du prix total
+    total = "Le prix total est de : "+(parseFloat(prixHt.value)*parseInt(quantite.value)*1.20).toFixed(2)+" €";
+}else{
+    //message d'erreur
+    total = "Les données ne sont pas correctes saisir des nombres";
+}
+//affichage du montant ou des erreurs
+document.getElementById('resultat').textContent = total;
