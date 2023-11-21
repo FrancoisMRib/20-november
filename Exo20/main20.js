@@ -100,8 +100,10 @@ tailleImage.style.height = '100px';
 
 //Aligner l'image à en haut à droite et ajouter un margin de 10 px.
 
-tailleImage.style.top = '50px' ;
+tailleImage.style.top = '90px' ;
 //tailleImage.style.left = 0 ;
+tailleImage.style.position = "absolute" ;
+//la ligne précédente est super importante, sinon tout le reste tombe à l'eau !
 tailleImage.style.right = 0 ;
 tailleImage.style.margin = '10px';
 

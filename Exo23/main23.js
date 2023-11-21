@@ -11,7 +11,7 @@ Partie JS :
                    --
 let regexEmail =/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-         -> si le emailmatch le pattern mettre l'input (email) en vert (backgroundColor)
+         -> si le email match le pattern mettre l'input (email) en vert (backgroundColor)
          -> sinon mettre l'input (email) en rouge(backgroundColor)
 2 Ajouter un écouteur événement (blur(désélection de l'input)-> input (id= password) 
          -> vérifier si le contenu de l'input (id= password) match  le pattern suivant :
@@ -27,3 +27,40 @@ Utiliser test() plutôt que match() dans vos conditions.
 */
 
 let regexEmail =/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+let regexPassword = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{12,20}$/;
+
+const emailInput = document.getElementById('email') ;
+const passwordInput = document.getElementById('password') ;
+
+emailInput.addEventListener('keyup', ()=>{
+    if (emailInput.value.match(regexEmail)) {
+        emailInput.style.backgroundColor = "green" ;
+    }
+    else {
+        emailInput.style.backgroundColor = "red" ;
+    }
+})
+passwordInput.addEventListener('blur', ()=>{
+    if (passwordInput.value.match(regexPassword)) {
+        passwordInput.style.backgroundColor = "green" ;
+    }
+    else {
+        passwordInput.style.backgroundColor = "red" ;
+    }
+})
+
+//CORRECTION Bonus
+//Récupérer le bouton
+const bt = document.getElementById('bt');
+//Récupérer le paragraphe
+const paragraphe = document.getElementById('error');
+//ajuter un événement clic sur le nom)
+bt.addEventListener('click', ()=> {
+    //test si le mail et le password sont valides
+    if(regexEmail.test(email.value) && regexPassword.test(passwordInput.value)) {
+        paragraphe.textContent = "valide";
+    } else {
+        paragraphe.textContent = "invalide";
+    }
+})
